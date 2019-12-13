@@ -6,7 +6,7 @@ if [ "$EUID" -ne 0 ]
 fi
 
 #application files
-mkdir /usr/local/etc/digital-ocean
+mkdir -p /usr/local/etc/digital-ocean
 touch /usr/local/etc/digital-ocean/.env
 cp digital-ocean-dns-updater.py /usr/local/etc/digital-ocean/
 chown -R $SUDO_USER:$SUDO_USER /usr/local/etc/digital-ocean
@@ -15,7 +15,7 @@ chown -R $SUDO_USER:$SUDO_USER /usr/local/etc/digital-ocean
 mkdir /var/log/digital-ocean
 chown -R $SUDO_USER:$SUDO_USER /var/log/digital-ocean
 
-echo "Please enter your api key for digital ocean: "
+echo "Please enter your api key for digital ocean (see https://www.digitalocean.com/docs/api/create-personal-access-token/): "
 read -s api_key
 
 echo "API_KEY=$api_key" > /usr/local/etc/digital-ocean/.env
